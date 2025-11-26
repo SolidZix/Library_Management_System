@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from uuid import UUID
-from domain.members.entities import Member
-from infrastracture.database.database import Session
-from infrastracture.database.database_models import Member as DBMember
+from ...domain.members.entities import Member
+from ...infrastracture.database.database import Session
+from ...infrastracture.database.database_models import Member as DBMember
 
 class MemberRepository(ABC):
     @abstractmethod

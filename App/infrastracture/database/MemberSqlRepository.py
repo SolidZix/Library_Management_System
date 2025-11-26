@@ -1,9 +1,9 @@
 from ...domain.members.entities import Member
-from domain.members.value_objects import MemberId, Name, Email
-from infrastracture.database.database import Session
-from infrastracture.database.database_models import Member as DBMember
+from ...domain.members.value_objects import MemberId, Name, Email
+from ...infrastracture.database.database import Session
+from ...infrastracture.database.database_models import Member as DBMember
 from datetime import datetime
-from domain.members.repository import MemberRepository
+from ...domain.members.repository import MemberRepository
 from uuid import UUID
 import uuid
 from uuid import uuid4
@@ -69,6 +69,10 @@ class MemberSQLRepository(MemberRepository):
 
         if not db_member:
             raise ValueError(f"Member {member.member_id.value} not found")
+        
+        existing = self.session.query(DBMember).filter_by(email=member.email.value).first() #checking if the email is in-use
+        if existing:
+            raise ValueError(f"Email '{member.email}' is already in use")
 
         db_member.name = member.name.value
         db_member.email = member.email.value

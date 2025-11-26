@@ -1,8 +1,8 @@
 # application/books/repository.py
 from abc import ABC, abstractmethod
-from domain.books.entities import Books
-from infrastracture.database.database import Session
-from infrastracture.database.database_models import Books as DBBook
+from ...domain.books.entities import Books
+from ...infrastracture.database.database import Session
+from ...infrastracture.database.database_models import Books as DBBook
 from datetime import datetime
 class BookRepository(ABC):
     @abstractmethod

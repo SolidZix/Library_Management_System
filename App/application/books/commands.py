@@ -1,7 +1,7 @@
 # application/books/commands.py
 from ...domain.books.entities import Books
 from ...infrastracture.database.MemberSqlRepository import MemberSQLRepository
-from presentation.BookSchema import BookUpdate
+from ...presentation.BookSchema import BookUpdate
 from datetime import datetime
 
 class BookServices:
@@ -23,7 +23,7 @@ class BookServices:
     def get(self, book_id: int):
         book = self.repo.get(book_id)
         if not book:
-            raise ValueError(f"Book {book_id} not found")
+            raise ValueError(f"Book with id {book_id} not found")
         return book
 
     def list(self):
@@ -32,7 +32,7 @@ class BookServices:
     def update(self, book_id: int, book_data: BookUpdate):
         book = self.repo.get(book_id)
         if not book:
-            raise ValueError(f"Book {book_id} not found")
+            raise ValueError(f"Book with id {book_id} not found")
         if not book_data.title:
             raise ValueError("Title is required")
         if not book_data.author:

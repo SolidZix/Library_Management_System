@@ -1,10 +1,10 @@
 from fastapi import FastAPI, HTTPException, APIRouter
-from application.members.commands import MemberServices
-from infrastracture.database.MemberSqlRepository import MemberSQLRepository
-from domain.members.entities import Member, MemberId, Name, Email
-from infrastracture.database.BookSqlRepository import BookSQLRepository
-from presentation.MemberSchema import MemberCreate, MemberResponse
-from presentation.mapper import member_to_schema
+from ..application.members.commands import MemberServices
+from ..infrastracture.database.MemberSqlRepository import MemberSQLRepository
+from ..domain.members.entities import Member, MemberId, Name, Email
+from ..infrastracture.database.BookSqlRepository import BookSQLRepository
+from ..presentation.MemberSchema import MemberCreate, MemberResponse
+from ..presentation.mapper import member_to_schema
 from uuid import UUID
 from uuid import uuid4
 from typing import List

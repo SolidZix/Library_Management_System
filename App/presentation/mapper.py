@@ -1,6 +1,6 @@
 # presentation/members/mappers.py
-from domain.members.entities import Member
-from presentation.MemberSchema import MemberResponse
+from ..domain.members.entities import Member
+from ..presentation.MemberSchema import MemberResponse
 
 def member_to_schema(member: Member) -> MemberResponse:
     return MemberResponse(

@@ -1,10 +1,10 @@
 # application/books/repository.py
 from abc import ABC, abstractmethod
-from domain.books.entities import Books
-from infrastracture.database.database import Session
-from infrastracture.database.database_models import Books as DBBook
+from ...domain.books.entities import Books
+from ...infrastracture.database.database import Session
+from ...infrastracture.database.database_models import Books as DBBook
 from datetime import datetime
-from domain.books.repository import BookRepository
+from ...domain.books.repository import BookRepository
 
 def vo_value(obj):
     return obj.value if hasattr(obj, "value") else obj
@@ -41,7 +41,7 @@ class BookSQLRepository(BookRepository):
     def update(self, book: Books):
         db_book = self.get(vo_value(book.book_id))
         if not db_book:
-            raise ValueError(f"Book {vo_value(book.book_id)} not found")
+            raise ValueError(f"Book with id {vo_value(book.book_id)} not found")
 
         db_book.title = vo_value(book.title)
         db_book.author = vo_value(book.author)
@@ -56,7 +56,7 @@ class BookSQLRepository(BookRepository):
     def delete(self, book_id: int):
         db_book = self.get(book_id)
         if not db_book:
-            raise ValueError(f"Book {book_id} not found")
+            raise ValueError(f"Book with id {book_id} not found")
         self.session.delete(db_book)
         self.session.commit()
         return True
@@ -65,7 +65,7 @@ class BookSQLRepository(BookRepository):
     def borrow(self, book_id: int, member_id: int):
         db_book = self.get(book_id)
         if not db_book:
-            raise ValueError(f"Book {book_id} not found")
+            raise ValueError(f"Book with id {book_id} not found")
         if db_book.is_borrowed:
             raise ValueError(f"Book {db_book.title} is already borrowed")
 
@@ -82,7 +82,7 @@ class BookSQLRepository(BookRepository):
     def return_book(self, book_id: int):
         db_book = self.get(book_id)
         if not db_book:
-            raise ValueError(f"Book {book_id} not found")
+            raise ValueError(f"Book with id {book_id} not found")
         if not db_book.is_borrowed:
             raise ValueError(f"Book {db_book.title} is not borrowed")
 

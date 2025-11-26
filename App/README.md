@@ -1,6 +1,6 @@
 # Library Management System
 
-A simple Library Management System built with FastAPI following a Domain-Driven Design (DDD) structure.  
+A simple Library Management System built with FastAPI following Domain-Driven Design (DDD) structure.  
 It allows managing books and members, including borrowing and returning books.
 
 ## 1. Setup
@@ -11,9 +11,9 @@ cd <your-repo-folder>
 2. Install dependencies:
 pip install -r requirements.txt
 
-
 ## 2. Running the Server:
-uvicorn app.main:app --reload
+1. on localhost --> uvicorn App.main:app --reload
+2. using docker --> sudo docker-compose up --build
 
 ## 3. Using the API Endpoints:
 Books

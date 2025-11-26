@@ -1,4 +1,4 @@
-from domain.members.entities import Member
+from ...domain.members.entities import Member
 from uuid import UUID
 
 
