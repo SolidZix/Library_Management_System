@@ -1,7 +1,5 @@
-# Use Python base image
 FROM python:3.10-slim
 
-# Set working directory
 WORKDIR /App
 
 # Install system dependencies (for PostgreSQL)
@@ -10,7 +8,6 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements first (for caching)
 COPY requirements.txt .
 
 # Install Python dependencies
