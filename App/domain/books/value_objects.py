@@ -17,10 +17,9 @@ class BookId:
 
 
 
-# Title VO
 class Title:
     def __init__(self, value: str):
-        value = value.strip()
+        value = value.strip()         #remove spaces on the right/left of the string
         if not value:
             raise ValueError("title cannot be empty")
         self._value = value
@@ -33,7 +32,6 @@ class Title:
         return self._value
 
 
-# Author VO
 class Author:
     def __init__(self, value: str):
         value = value.strip()
@@ -49,7 +47,6 @@ class Author:
         return self._value
 
 
-# IsBorrowed VO
 class IsBorrowed:
     def __init__(self, value: bool = False):
         if not isinstance(value, bool):
@@ -61,7 +58,6 @@ class IsBorrowed:
         return self._value
 
 
-# BorrowedDate VO
 class BorrowedDate:
     def __init__(self, value: datetime | None = None):
         if value is not None and not isinstance(value, datetime):
@@ -80,7 +76,6 @@ class BorrowedBy:
     def value(self):
         return self._value
 
-# CreatedAt VO
 class CreatedAt:
     def __init__(self, value: datetime | None = None):
         self._value = value or datetime.now()
@@ -90,8 +85,7 @@ class CreatedAt:
         return self._value
 
 
-# UpdatedAt VO
-class UpdatedAt:
++class UpdatedAt:
     def __init__(self, value: datetime | None = None):
         self._value = value or datetime.now()
 
