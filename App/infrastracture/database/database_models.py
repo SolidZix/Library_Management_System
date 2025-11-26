@@ -24,4 +24,4 @@ class Member(Base):
 
     member_id = Column(PG_UUID(as_uuid=True), primary_key=True)
     name = Column(String, nullable=False)
-    email = Column(String, nullable=False)
+    email = Column(String, nullable=False, unique=True)

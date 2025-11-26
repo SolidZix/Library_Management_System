@@ -2,12 +2,12 @@
 from fastapi import FastAPI, HTTPException
 from fastapi import APIRouter
 from typing import List
-from application.books.commands import LibraryCommands
+from ..application.books.commands import BookServices
 from infrastracture.database.BookSqlRepository import BookSQLRepository
 from presentation.BookSchema import BookCreate, BookResponse, BookUpdate
 from uuid import UUID
 repo = BookSQLRepository()
-commands = LibraryCommands(repo)
+commands = BookServices(repo)
 
 router = APIRouter() 
 

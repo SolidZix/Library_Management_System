@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException, APIRouter
-from application.members.commands import LibraryCommands
+from application.members.commands import MemberServices
 from infrastracture.database.MemberSqlRepository import MemberSQLRepository
 from domain.members.entities import Member, MemberId, Name, Email
 from infrastracture.database.BookSqlRepository import BookSQLRepository
@@ -11,7 +11,7 @@ from typing import List
 
 member_repo = MemberSQLRepository()
 book_repo = BookSQLRepository()
-commands = LibraryCommands(member_repo, book_repo)
+commands = MemberServices(member_repo, book_repo)
 
 router = APIRouter()  
 

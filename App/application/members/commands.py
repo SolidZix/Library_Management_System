@@ -2,7 +2,7 @@ from domain.members.entities import Member
 from uuid import UUID
 
 
-class LibraryCommands:
+class MemberServices:
     def __init__(self, member_repo, book_repo):
         self.member_repo = member_repo
         self.book_repo = book_repo

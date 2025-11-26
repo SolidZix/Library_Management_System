@@ -1,4 +1,4 @@
-from domain.members.entities import Member
+from ...domain.members.entities import Member
 from domain.members.value_objects import MemberId, Name, Email
 from infrastracture.database.database import Session
 from infrastracture.database.database_models import Member as DBMember
@@ -17,8 +17,13 @@ class MemberSQLRepository(MemberRepository):
     # ADD MEMBER
     # ----------------------------
     def add(self, member: Member):
-        if member.name.value == "" or member.email.value == "":
+        if member.name.value == "" or member.email.value == "": 
             raise ValueError("Name and email are required")
+        
+        existing = self.session.query(DBMember).filter_by(email=member.email.value).first() #checking if the email is in-use
+        if existing:
+            raise ValueError(f"Email '{member.email}' is already in use")
+        
         db_member = DBMember(
             member_id=member.member_id.value if hasattr(member.member_id, "value") else uuid4(),
             name=member.name.value if hasattr(member.name, "value") else member.name,

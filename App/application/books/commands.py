@@ -1,10 +1,10 @@
 # application/books/commands.py
-from domain.books.entities import Books
-from infrastracture.database.MemberSqlRepository import MemberSQLRepository
+from ...domain.books.entities import Books
+from ...infrastracture.database.MemberSqlRepository import MemberSQLRepository
 from presentation.BookSchema import BookUpdate
 from datetime import datetime
 
-class LibraryCommands:
+class BookServices:
     def __init__(self, repo):
         self.repo = repo  # inject BookSQLRepository
 
